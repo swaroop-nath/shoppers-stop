@@ -37,3 +37,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Property and Config files
+/shoppers-stop-backend/src/main/resources/application.properties
