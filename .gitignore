@@ -29,7 +29,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-
-/shoppers-stop-frontend/node_modules
-/shoppers-stop-backend/src/main/resouces/application.properties
