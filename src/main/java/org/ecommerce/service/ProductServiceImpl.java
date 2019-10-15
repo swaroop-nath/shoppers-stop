@@ -30,6 +30,5 @@ public class ProductServiceImpl implements ProductService {
         if (productWrapper.isPresent())
             return productWrapper.get();
         throw new ProductNotFoundException("No Product Found For the ID: " + id);
-//    	return repository.findByID(id);
     }
 }

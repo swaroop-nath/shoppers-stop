@@ -1,6 +1,9 @@
 package org.ecommerce.model;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.Cascade;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,17 +21,17 @@ public class Product {
 
     private String productName;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "brand_id", updatable = true)
     private Brand productBrand;
 
     private int stock;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "category_id", updatable = false)
     private Category category;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(name = "product_filter_master",
             joinColumns = {@JoinColumn(name = "product_id")},
             inverseJoinColumns = {@JoinColumn(name = "filter_id")})
@@ -37,6 +40,7 @@ public class Product {
     private double rating;
 
     private double productPrice;
+    
     {
         filters = new ArrayList<Filter>();
     }

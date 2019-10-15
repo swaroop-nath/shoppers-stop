@@ -19,7 +19,7 @@ public class Category {
     @Column(length = 30)
     private String categoryName;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(name = "category_filter_master",
             joinColumns = {@JoinColumn(name = "category_id")},
             inverseJoinColumns = {@JoinColumn(name = "filter_id")})

@@ -1,5 +1,6 @@
 package org.ecommerce.shoppersstopweb;
 
+import org.ecommerce.exception.ProductNotFoundException;
 import org.ecommerce.model.Brand;
 import org.ecommerce.model.Category;
 import org.ecommerce.model.Filter;
@@ -25,7 +26,7 @@ public class ShoppersStopWebApplicationTests {
     @Autowired private ProductService service;
 
     @Test
-    public void contextLoads() {
+    public void contextLoads() throws ProductNotFoundException {
         assertNotNull(controller);
         Product dummy = new Product();
 
@@ -34,8 +35,10 @@ public class ShoppersStopWebApplicationTests {
         dummy.setStock(25);
         dummy.setProductPrice(2500);
 
-        Brand orange = new Brand();
-        orange.setBrandName("Orange");
+//        Brand orange = new Brand();
+//        orange.setBrandName("Orange");
+        
+        Brand orange = service.fetchProductById(6).getProductBrand();
 
         Filter f1 = new Filter();
         Filter f2 = new Filter();
